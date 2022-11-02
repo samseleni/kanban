@@ -1,0 +1,6 @@
+.select:not([multiple]) {
+    background-image: url('../../images/arrow-black.svg');
+    background-position: 95% center;
+    background-size: 38.4px auto;
+    background-size: 18px auto;
+  }

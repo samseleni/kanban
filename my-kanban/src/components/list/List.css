@@ -1,0 +1,78 @@
+.list {
+    background-color: #EBECF0;
+    border-radius: 10px;
+    width: 282px;
+    padding: 12px 0 12px 12px;
+    max-height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-container {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-container::-webkit-scrollbar {
+    width: 12px;
+    background-color: #f9f9fd;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+    background-color: #CBCBCB;
+    border-radius: 5px;
+}
+
+.list-title {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.list-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.list-task {
+    background-color: white;
+    margin: 15px 12px 0 0;
+    padding: 7px 9px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.button {
+    border: 0;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 102px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 17px;
+}
+
+.list-button {
+    color: #5E6C84;
+}
+
+.list-button:hover {
+    background-color: white;
+}
+
+.button-disabled {
+    color: #bbc1cb;
+    cursor: default;
+}
+
+.button-disabled:hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.list-plus {
+    font-size: 25px;
+}

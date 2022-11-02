@@ -1,0 +1,44 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0067A3;
+    padding: 0 19px;
+    height: 55px;
+}
+
+.header-title {
+    color: white;
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.header__user {
+    display: flex;
+    align-items: center;
+}
+
+.header__user-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+.header__user-select {
+    width: 58px;
+    height: 40px;
+}
+
+.header__user-select:not([multiple]) {
+    padding-right: 4em;
+    background-position: 2% center, 98% center;
+    background-size: 38.4px auto, 1.4em auto;
+}
+
+.header__user-select-off:not([multiple]) {
+    background-image: url('../../images/user-avatar.svg'), url("../../images/arrow-white.svg");
+}
+
+.header__user-select-on:not([multiple]) {
+    background-image: url('../../images/user-avatar.svg'), url("../../images/arrow-white_on.svg")
+}
+

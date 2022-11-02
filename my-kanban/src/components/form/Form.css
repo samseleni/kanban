@@ -1,0 +1,19 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input {
+    border: 0;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+}
+
+input::placeholder {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.form-button {
+    background-color: #0079BF;
+    color: white;
+}
