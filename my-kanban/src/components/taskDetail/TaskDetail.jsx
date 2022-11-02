@@ -4,15 +4,17 @@ import { useParams, Link } from 'react-router-dom'
 import './TaskDetail.css';
 import '../form/Form.css'
 
-const TaskDetail = () => {
+const TaskDetail = (props) => {
 
-    const tasks = JSON.parse(window.localStorage.getItem("tasks"));
+    const {tasks, setTasks} = props;
 
     const {taskId} = useParams();
     const task = tasks.find(task => task.id === taskId);
 
     const startDescription = 'This task has no description';
-    const [newDescription, setDescription] = useState((task && task.description.length) ? task.description : startDescription);
+    
+    const [description, setDescription] = useState((task && task.description) ? task.description : startDescription);
+
     const [isEdit, setIsEdit] = useState(true);
     const textarea = useRef();
     
@@ -21,26 +23,23 @@ const TaskDetail = () => {
         textarea.current.disabled = !textarea.current.disabled;
 
         //логика по виду поля и кнопки и вводу описания
-        if (newDescription === startDescription) {
+        if (description === startDescription) {
             setDescription('');
             textarea.current.focus();
-        } else if (newDescription === '') setDescription(startDescription);
+        } else if (description === '') setDescription(startDescription);
         else { 
             textarea.current.focus();
-            textarea.current.setSelectionRange(task.description.length, task.description.length);
+            textarea.current.setSelectionRange(description.length, description.length);
         }
 
-        //логика по записи описания в localstorage
+        //запись описания в задачу
         if (isEdit === false) {
             const newTasks = tasks.map(newTask => {
-                if (newTask.id === taskId && newDescription !== startDescription) {
-                    return ({...newTask, description: newDescription})
-                    // newTask.description = description === startDescription ? '' : description;
-                }
+                if (newTask.id === task.id && description !== startDescription) return ({...newTask, description});
                 return newTask;
             })
-            window.localStorage.setItem('tasks', JSON.stringify(newTasks))
-        }
+            setTasks(newTasks)       
+        }  
     }
 
     return (
@@ -50,7 +49,7 @@ const TaskDetail = () => {
                     <div className="text-container">
                         <h2 className='detail-title'>{task.title}</h2>
                         <textarea 
-                            value={newDescription}
+                            value={description}
                             ref={textarea} 
                             name="detail-description" 
                             id="detail-description" 

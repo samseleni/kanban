@@ -5,13 +5,13 @@ import { LIST_TYPES, LIST_COPY } from "../../config";
 import List from "../list/List";
 
 const Board = (props) => {
-    const {tasks, setTasks} = props;
+    const {tasks, setTasks, description} = props;
 
     const addNewTask = (title) => {
         const newTask = {
             id: uniqid(),
             title: title,
-            description: '',
+            description,
             status: LIST_TYPES.BACKLOG
         }
         setTasks([...tasks, newTask]);
@@ -19,11 +19,7 @@ const Board = (props) => {
 
     const moveTask = (id, type) => {
         const taskToMove = tasks.map(task => {
-            
-            // task.status = task.id === id ? type : task.status; 
-            if (task.id === id) {        
-                console.log(task.description)
-                return ({...task, status: type})};
+            if (task.id === id) return ({...task, status: type});
             return task;
           })     
         setTasks(taskToMove);
