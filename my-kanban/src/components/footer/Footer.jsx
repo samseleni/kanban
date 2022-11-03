@@ -1,24 +1,24 @@
 import React from "react";
 import './Footer.css'
 import '../header/Header.css'
-import { LIST_TYPES, LIST_COPY } from "../../config";
+import { LIST_TYPES } from "../../config";
 
 const Footer = (props) => {
-    const {tasks} = props; 
+    const {tasks, name, year} = props; 
+    const activeTasks = tasks.filter(task => task.status === LIST_TYPES.BACKLOG);
+    const finishedTasks = tasks.filter(task => task.status === LIST_TYPES.FINISHED);
+
     return (
         <footer className="footer header">
             <div className="count">
-                {Object.values(LIST_TYPES).map(type => {
-                    const listCount = tasks.filter(task => task.status === type);
-                    if (!listCount.length) return null;
-                    return (
-                        <div key={type} className="count-item">
-                                {LIST_COPY[type]}: {listCount.length}
-                        </div>
-                    )
-                })}
+                <div className={`count-item ${(activeTasks.length === 0 || !finishedTasks.length === 0) ? 'count-item-single' : ''}`}>
+                    {activeTasks.length ? `Active tasks: ${activeTasks.length}` : null}
+                </div>
+                <div className="count-item">
+                    {finishedTasks.length ? `Finished tasks: ${finishedTasks.length}` : null}
+                </div>
             </div>
-            <div>Kanban board by NAME, YEAR</div>
+            <div>Kanban board by {name}, {year}</div>
         </footer>
     )
 }

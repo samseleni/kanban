@@ -7,6 +7,12 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    margin-right: 24px;
+}
+
+.list:last-of-type {
+    margin-right: 0;
 }
 
 .list-container {

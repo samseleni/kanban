@@ -4,7 +4,8 @@
     align-items: center;
     background-color: #0067A3;
     padding: 0 19px;
-    height: 55px;
+    min-height: 55px;
+    box-sizing: border-box;
 }
 
 .header-title {
@@ -15,7 +16,12 @@
 
 .header__user {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 7px;
+    right: 20px;
+    align-items: flex-end;
+    cursor: pointer;
 }
 
 .header__user-avatar {
@@ -24,21 +30,64 @@
 }
 
 .header__user-select {
-    width: 58px;
+    width: 64px;
     height: 40px;
-}
-
-.header__user-select:not([multiple]) {
-    padding-right: 4em;
-    background-position: 2% center, 98% center;
     background-size: 38.4px auto, 1.4em auto;
+    background: no-repeat;
 }
 
-.header__user-select-off:not([multiple]) {
+.header__user-select-off {
+    background-position: 2% center, 98% center;
     background-image: url('../../images/user-avatar.svg'), url("../../images/arrow-white.svg");
 }
 
-.header__user-select-on:not([multiple]) {
+.header__user-select-on {
+    background-position: 2% center, 98% center;
     background-image: url('../../images/user-avatar.svg'), url("../../images/arrow-white_on.svg")
+}
+
+.square {
+    width: 11px;
+    height: 11px;
+    transform: rotate(45deg);
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 45px;
+    right: 38px;
+}
+
+.header__user-select-nav {
+    box-sizing: border-box;
+    width: 134px;
+    height: 60px;
+    padding: 8px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    justify-content: space-around;
+    z-index: 1;
+    margin-top: 11px;
+    position: relative;
+}
+
+.header__user-select-nav a {
+    font-size: 14px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.header__user-select-nav a:hover {
+    text-decoration: underline;
+} 
+
+@media (max-width: 1300px) {
+    .header {
+        background-color: #0079BF;
+    }
+
+    .header-title {
+        display: none;
+    }
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link } from 'react-router-dom'
 
 import { LIST_TYPES } from "../../config";
@@ -7,10 +7,16 @@ import { LIST_TYPES } from "../../config";
 import './List.css'
 import Form from "../form/Form";
 import Dropdown from "../dropdown/Dropdown";
+import { useEffect } from "react";
 
 const List = (props) => {
     const {title, type, tasks, addNewTask, prevTasks, moveTask} = props;
-    const [isFormShowed, setFormShowed] = useState(false);    
+    const [isFormShowed, setFormShowed] = useState(false);  
+    const listContainer = useRef();
+
+    useEffect(() => {
+        listContainer.current.scrollTop = listContainer.current.scrollHeight;
+    }, [isFormShowed])
 
     const handleCLick = () => {
         setFormShowed(!isFormShowed);
@@ -19,11 +25,11 @@ const List = (props) => {
     return (
         <div className="list">
             <h3 className="list-title">{title}</h3>
-            <div className='list-container'>
-                {tasks.map(task => {
+            <div className='list-container' ref={listContainer}>
+                {tasks.map((task) => {
                     return (
-                        <Link to={`/tasks/${task.id}`} className='list-link'>
-                            <div key={task.id} className="list-task">{task.title}</div>
+                        <Link key={task.id} to={`/tasks/${task.id}`} className='list-link'>
+                            <div className="list-task">{task.title}</div>
                         </Link>
                     )
                 })}
@@ -40,7 +46,7 @@ const List = (props) => {
                     <Form addNewTask={addNewTask} setFormShowed={setFormShowed}/>
                 )}
                 {isFormShowed && type !== LIST_TYPES.BACKLOG && (
-                    <Dropdown prevTasks={prevTasks} isFormShowed={isFormShowed} setFormShowed={setFormShowed} type={type} moveTask={moveTask} />
+                    <Dropdown prevTasks={prevTasks} isFormShowed={isFormShowed} setFormShowed={setFormShowed} type={type} moveTask={moveTask}/>
                 )}  
             </div>    
         </div>

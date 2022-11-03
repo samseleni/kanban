@@ -1,11 +1,13 @@
 import React from "react";
-import uniqid from 'uniqid'
+import uniqid from 'uniqid';
 import './Board.css'
 import { LIST_TYPES, LIST_COPY } from "../../config";
 import List from "../list/List";
 
 const Board = (props) => {
     const {tasks, setTasks, description} = props;
+    const newTasks = tasks;
+    const types = Object.values(LIST_TYPES);
 
     const addNewTask = (title) => {
         const newTask = {
@@ -18,14 +20,14 @@ const Board = (props) => {
     }
 
     const moveTask = (id, type) => {
-        const taskToMove = tasks.map(task => {
-            if (task.id === id) return ({...task, status: type});
-            return task;
-          })     
-        setTasks(taskToMove);
+        tasks.map((task, index) => {
+            if (task.id === id) {
+                const taskToMove = task;
+                setTasks(newTasks.splice(index, 1));          
+                setTasks([...tasks, {...taskToMove, status: type}]);
+            }
+        }) 
     }
-
-    const types = Object.values(LIST_TYPES);
     
     return (
         <div className="board">

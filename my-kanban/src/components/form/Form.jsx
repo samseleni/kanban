@@ -25,7 +25,7 @@ const Form = (props) => {
 
     return (
         <form className='form' onSubmit={handleSubmit}>
-            <input 
+            <input
                 className='form-input list-task' 
                 id='taskTitle' 
                 name='title' 
@@ -33,6 +33,7 @@ const Form = (props) => {
                 value={values.title}
                 onChange={handleChange}
                 placeholder=' '
+                autoFocus
             />
             <button className='button form-button' type='submit'>Submit</button>
         </form>

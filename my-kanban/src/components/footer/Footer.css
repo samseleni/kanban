@@ -8,4 +8,13 @@
 
 .count {
     display: flex;
+    justify-content: flex-start;
+}
+
+.count-item {
+    margin-right: 36px;
+}
+
+.count-item-single {
+    margin: 0;
 }

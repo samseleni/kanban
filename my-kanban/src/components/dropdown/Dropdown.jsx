@@ -4,9 +4,9 @@ import '../list/List.css'
 
 const Dropdown = (props) => {
     const {prevTasks, type, setFormShowed, isFormShowed, moveTask} = props;
-
+    
     const handleChange = (e) => {
-		let task = null
+		let task = null;
         if (e.target.selectedIndex) {
             task = prevTasks[e.target.selectedIndex - 1];
             moveTask(task.id, type);
@@ -15,13 +15,12 @@ const Dropdown = (props) => {
 	}
     
     return (
-        <select className='select list-task' onChange={handleChange}>
+        <select className='select list-task' onChange={handleChange} onBlur={() => setFormShowed(false)}>
             <option value=""></option>
             {prevTasks.map(task => {
-                return <option className='select-item' key={task.id} value={task.title}>{task.title}</option>
+                return <option className='select-item list-task' key={task.id} value={task.title}>{task.title}</option>
             })}
         </select>
-        
     )
 }
 
