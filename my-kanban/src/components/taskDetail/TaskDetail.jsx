@@ -1,17 +1,15 @@
 import React from "react";
-import { useState, useRef } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import './TaskDetail.css';
-import '../form/Form.css'
+import { useState, useRef } from "react";
+import { useParams, Link } from "react-router-dom";
+import "./TaskDetail.css";
+import "../form/Form.css";
 
 const TaskDetail = (props) => {
 
     const {tasks, setTasks} = props;
-
     const {taskId} = useParams();
     const task = tasks.find(task => task.id === taskId);
-
-    const startDescription = 'This task has no description';
+    const startDescription = "This task has no description";
     
     const [description, setDescription] = useState((task && task.description) ? task.description : startDescription);
 
@@ -24,9 +22,9 @@ const TaskDetail = (props) => {
 
         //логика по виду поля и кнопки и вводу описания
         if (description === startDescription) {
-            setDescription('');
+            setDescription("");
             textarea.current.focus();
-        } else if (description === '') setDescription(startDescription);
+        } else if (description === "") setDescription(startDescription);
         else { 
             textarea.current.focus();
             textarea.current.setSelectionRange(description.length, description.length);
@@ -38,7 +36,7 @@ const TaskDetail = (props) => {
                 if (newTask.id === task.id && description !== startDescription) return ({...newTask, description});
                 return newTask;
             })
-            setTasks(newTasks)       
+            setTasks(newTasks);
         }  
     }
 
@@ -47,7 +45,7 @@ const TaskDetail = (props) => {
             {task ? (
                 <>
                     <div className="text-container">
-                        <h2 className='detail-title'>{task.title}</h2>
+                        <h2 className="detail-title">{task.title}</h2>
                         <textarea 
                             value={description}
                             ref={textarea} 
@@ -62,15 +60,14 @@ const TaskDetail = (props) => {
                             id="detail-description" 
                             onClick={handleCLick} 
                         >
-                            {isEdit ? 'Edit description' : 'Save description'}
+                            {isEdit ? "Edit description" : "Save description"}
                         </button>
-                        
                     </div>
                 </>
             ) :
-                (<h2 className='detail-title'>Task {taskId} not found</h2>)
+                (<h2 className="detail-title">Task {taskId} not found</h2>)
             }
-            <Link to='/' className="detail-close">&#x2715;</Link>
+            <Link to="/" className="detail-close">&#x2715;</Link>
         </div>
     )
 }

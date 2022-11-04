@@ -6,3 +6,9 @@
     background-color: #0079BF;
     overflow: hidden;
 }
+
+@media (max-width: 650px) {
+    .main {
+        padding: 0 35px 0 21px
+    }
+}

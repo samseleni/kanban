@@ -1,10 +1,10 @@
 import React from "react";
 import { useState, useRef } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 import { LIST_TYPES } from "../../config";
 
-import './List.css'
+import "./List.css";
 import Form from "../form/Form";
 import Dropdown from "../dropdown/Dropdown";
 import { useEffect } from "react";
@@ -25,19 +25,19 @@ const List = (props) => {
     return (
         <div className="list">
             <h3 className="list-title">{title}</h3>
-            <div className='list-container' ref={listContainer}>
+            <div className="list-container" ref={listContainer}>
                 {tasks.map((task) => {
                     return (
-                        <Link key={task.id} to={`/tasks/${task.id}`} className='list-link'>
+                        <Link key={task.id} to={`/tasks/${task.id}`} className="list-link">
                             <div className="list-task">{task.title}</div>
                         </Link>
                     )
                 })}
                 {isFormShowed === false && (
                 <button 
-                    className={`button list-button ${(type !== LIST_TYPES.BACKLOG && prevTasks.length === 0) ? 'button-disabled': ''}`} 
+                    className={`button list-button ${(type !== LIST_TYPES.BACKLOG && prevTasks.length === 0) ? "button-disabled": ""}`} 
                     onClick={handleCLick} 
-                    type='text' 
+                    type="text" 
                     disabled={(type !== LIST_TYPES.BACKLOG && prevTasks.length === 0) ? true : false}>
                     <span className="list-plus">+&thinsp;</span>Add card
                 </button>
@@ -53,4 +53,4 @@ const List = (props) => {
     )
 }
 
-export default List
+export default List;

@@ -1,6 +1,6 @@
 import React from "react";
-import './Footer.css'
-import '../header/Header.css'
+import "./Footer.css";
+import "../header/Header.css";
 import { LIST_TYPES } from "../../config";
 
 const Footer = (props) => {
@@ -11,7 +11,7 @@ const Footer = (props) => {
     return (
         <footer className="footer header">
             <div className="count">
-                <div className={`count-item ${(activeTasks.length === 0 || !finishedTasks.length === 0) ? 'count-item-single' : ''}`}>
+                <div className={`count-item ${(activeTasks.length === 0 || !finishedTasks.length === 0) ? "count-item-single" : ""}`}>
                     {activeTasks.length ? `Active tasks: ${activeTasks.length}` : null}
                 </div>
                 <div className="count-item">
@@ -23,4 +23,4 @@ const Footer = (props) => {
     )
 }
 
-export default Footer
+export default Footer;
