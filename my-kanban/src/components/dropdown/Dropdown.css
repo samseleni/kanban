@@ -26,13 +26,4 @@
     background-position: 95% center;
     background-size: 38.4px auto;
     background-size: 18px auto;
-  }
-
-.select-item {
-  cursor: pointer;
-  padding: 19px;
-}
-
-.select-item:hover {
-  background: grey;
 }
